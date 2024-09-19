@@ -1,0 +1,99 @@
+*{
+    box-sizing: border-box;
+    margin: 0;padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('../img/loan_whitebackground.jpg');
+}
+
+
+#na{
+    display: flex;
+    background-color: blue;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+}
+
+.head{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 120px;
+}
+
+.main-section{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 15px;
+    margin-left: 100px;
+    margin-right: 50px;
+}
+
+.left img{
+    width: 500px;
+    height: 600px;
+    border-radius: 25px;
+}
+
+.right{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 50%;
+    height: 670px;
+    border-radius: 10px;
+    background-color: rgb(214, 214, 214); 
+}
+
+.form{
+    width:90%;
+}
+
+.app1{
+    color: black;
+    font-size: 30px;
+    margin-left: 20px;
+    margin-bottom: 30px;
+}
+
+.form-group{
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 59px;
+    width: 100%;
+    justify-content: left;
+    margin-top: 8px;
+}
+
+.form-group label {
+    display: flex;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+input,select{
+    width: 100%;
+    height: 30px;
+    border-radius: 8px;
+    border: none;
+}
+
+button{
+    margin-left: 20px;
+    margin-top: 10px;
+    font-size: 16px;
+    height: 50px;
+    width: 150px;
+    border-radius: 20px;
+    background-color: blue;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
