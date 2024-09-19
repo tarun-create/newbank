@@ -1,0 +1,31 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/paymentdone.css' %}">
+</head>
+<body>
+    <div class="payment-success-container">
+        <div class="checkmark">
+            <span>&#10004;</span>
+        </div>
+        <h2>Payment Successful!</h2>
+        <p>Your payment has been processed successfully. Thank you for your purchase!</p>
+        
+        <div class="order-summary">
+            <h3>Order Summary</h3>
+            <ul>
+                <li>Order Number: <strong>#001</strong></li>
+                <li>Amount Paid: <strong>RS. {{ course.ccost }}</strong></li>
+                <li>Payment Method: <strong>Credit Card</strong></li>
+            </ul>
+        </div>
+        
+        <a href="{% url 'customerdash' %}"><button class="back-btn" >Back to Course</button></a>
+    </div>
+</body>
+</html>

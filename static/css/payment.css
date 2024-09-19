@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #f0aad8, #88d3ce);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.payment-container {
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    width: 450px;
+    max-width: 90%;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+h2 {
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.payment-options {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.option-card, .option-qr {
+    background-color: #f0f0f0;
+    padding: 12px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    flex-grow: 1;
+    margin: 0 5px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.option-card.selected, .option-qr.selected {
+    background-color: #f0aad8;
+    color: white;
+}
+
+.payment-form-section {
+    margin-top: 20px;
+}
+
+.payment-form .form-group, .form-row .form-group .form-group-cards{
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.payment-form label {
+    font-weight: 400;
+    color: #666;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.payment-form input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    transition: border 0.3s ease;
+}
+
+.payment-form input:focus {
+    border-color: #ff1b99;
+    outline: none;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-row .form-group {
+    width: 48%;
+}
+
+.form-group-cards{
+    width: 60%;
+}
+
+.card-icons {
+    margin: 20px 0;
+}
+
+.card-icons img {
+    width: 40px;
+    margin: 0 5px;
+}
+
+.pay-btn {
+    width: 100%;
+    background-color: #ff1b99;
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.pay-btn:hover {
+    background-color: #eb80d3;
+}
+
+.qr-payment {
+    text-align: center;
+    padding: 20px;
+}
+
+.qr-image {
+    width: 150px;
+    height: 150px;
+    margin: 20px 0;
+}
+
+.qr-payment p {
+    font-size: 16px;
+    color: #555;
+}
+
+.card-img{
+    width: 10px;
+}
+
+
+
+.cards {
+    display: flex;
+    flex-wrap: nowrap; /* Prevent wrapping */
+    gap: 20px; /* Space between options */
+    margin-top: 8px; /* Add margin if needed */
+}
+
+.cards div {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between radio button and label */
+}

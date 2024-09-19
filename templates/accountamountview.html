@@ -1,0 +1,95 @@
+{% extends './customer/bankadm.html' %}
+{% load static %}
+
+{% block body_block %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <link rel="stylesheet" href="{% static 'css/payment.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> 
+</head>
+<body>
+    <div class="payment-container">
+        <h2>Secure Payment</h2>
+
+        <div class="payment-options">
+            <div class="option-card selected">Pay with Card</div>
+            <div class="option-qr">Pay with QR Code</div>
+        </div>
+
+        
+        
+        <div class="payment-form-section">
+            <!-- Card Payment Form -->
+            <form class="payment-form">
+                
+
+                    <div class="form-group">
+                        <label for="amount">Enter Amount</label>
+                        <input type="text" id="amount" name="amount" placeholder="Enter Amount" maxlength="12" required>
+                    </div>
+                </div>
+
+
+
+                <button type="submit" class="pay-btn" onclick="check();">Submit payment</button>
+
+
+            </form>
+
+            <!-- QR Code Payment Option -->
+            <div class="qr-payment" style="display:none;">
+                <img src="{% static 'images/payment.jpeg' %}" alt="QR Code" class="qr-image">
+                <p>Scan the QR code with your payment app to complete the transaction.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const optionCard = document.querySelector('.option-card');
+        const optionQR = document.querySelector('.option-qr');
+        const paymentForm = document.querySelector('.payment-form');
+        const qrPayment = document.querySelector('.qr-payment');
+
+        optionCard.addEventListener('click', () => {
+            paymentForm.style.display = 'block';
+            qrPayment.style.display = 'none';
+            optionCard.classList.add('selected');
+            optionQR.classList.remove('selected');
+        });
+
+        optionQR.addEventListener('click', () => {
+            paymentForm.style.display = 'none';
+            qrPayment.style.display = 'block';
+            optionCard.classList.remove('selected');
+            optionQR.classList.add('selected');
+        });
+
+        function check()
+        {
+            
+            
+            
+            var amount = $('#amount').val();
+
+
+            $.ajax({
+                type: "POST",
+                url: "/customer/payeecheck",
+                data: {"amount":amount },
+                success: function(data)
+                {
+                    alert("payment completed succssfully")
+                    window.location.replace("/customer/UserPaymentView");
+                }
+            });
+        }
+
+    </script>
+</body>
+</html>
+{% endblock %}

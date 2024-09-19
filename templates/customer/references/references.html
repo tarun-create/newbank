@@ -1,0 +1,72 @@
+{% extends '../landingpage/landingpage.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/customer_references.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<link rel="icon" href="/path/to/favicon.ico" type="image/x-icon">
+
+
+<body>
+    
+    <nav id="na">
+        <marquee behavior="" direction=""  ><h1>Welcome To Sudeeksha Banking!!</h1></marquee>
+        
+    </nav>
+    <div class="nav">
+        <h1>References</h1>
+        <p>Refering a new Customer!!</p>
+    </div>
+    <div class="main-section" style="margin-bottom: 40px;">
+        <div class="main-left">
+            <img src="{% static 'img/customer_references.jpg' %}" alt="">
+
+        </div>
+        <div class="main-right">
+            <div class="a1">
+                <input type="text" placeholder="Enter  Name" required  id="name">
+                <input type="text" placeholder="Enter  Mobile Number" maxlength="10" minlength="10" required id="mobile">
+            
+            </div>
+            
+
+
+            <div class="a2">
+                <input type="text" placeholder="Enter Address" id="address">
+                <input type="text" placeholder="Type Your Message" id="message">
+
+
+            </div>
+
+            <br>
+
+            <button id="but" onclick="submitdata();">Submit</button>
+
+        </div>
+
+    </div>
+
+    <script>
+        function submitdata(){
+            var name = $('#name').val();
+            var mobile = $('#mobile').val();
+            var address = $('#address').val();
+            var message = $('#message').val();
+
+
+             $.ajax({
+             type: "POST",
+             url: "/customer/create_reference",
+             data: {"username": name, "mobile": mobile, "address":address, "message":message},
+             success: function(data)
+             {
+                alert("Account created successfully")
+                window.location.replace("/customer/loginform");
+             }
+                    
+            });
+        }
+    </script>
+   
+</body>
+</html>
+{% endblock body %}

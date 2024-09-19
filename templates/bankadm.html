@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/bankadm.css' %}">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Additional Styles (if any) -->
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2><i class="fas fa-tachometer-alt"></i> Customer Dashboard</h2>
+            <ul class="nav-links">
+                <li class="dropdown">
+                    <a href="{% url 'UserProfileView' %}" ><i class="fas fa-user-circle"></i> Profile </a>
+                </li>
+                <li class="dropdown">
+                    <a href="{% url 'accountpayview' %}" ><i class="fas fa-credit-card"></i> Pay </a>
+                </li>
+                <li class="dropdown"></li>
+                    <a href="{% url 'payeedetailsview' %}" ><i class="fas fa-credit-card"></i> Payee </a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle"><i class="fas fa-exchange-alt"></i> Transfer <i class="fas fa-caret-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#create-transfer"><i class="fas fa-plus"></i> Create</a></li>
+                        <li><a href="#view-transfer"><i class="fas fa-eye"></i> View</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle"><i class="fas fa-hand-holding-usd"></i> Loan <i class="fas fa-caret-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#create-loan"><i class="fas fa-plus"></i> Create</a></li>
+                        <li><a href="#view-loan"><i class="fas fa-eye"></i> View</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle"><i class="fas fa-credit-card"></i> Card <i class="fas fa-caret-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#create-card"><i class="fas fa-plus"></i> Create</a></li>
+                        <li><a href="#view-card"><i class="fas fa-eye"></i> View</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle"><i class="fas fa-shield-alt"></i> Insurance <i class="fas fa-caret-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#create-insurance"><i class="fas fa-plus"></i> Create</a></li>
+                        <li><a href="#view-insurance"><i class="fas fa-eye"></i> View</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <h1><i class="fas fa-user-cog"></i> Welcome to {{ currentuser }}</h1>
+                <nav class="top-nav">
+                    <a href="#">Profile</a>
+                    <a href="#">Logout</a>
+                </nav>
+            </header>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                {% block body_block %}
+                {% endblock %}
+                <!-- Content goes here -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Banking Dashboard. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Sidebar Toggle and Content -->
+    <script>
+        // Toggle dropdown menus
+        document.querySelectorAll('.dropdown-toggle').forEach(item => {
+            item.addEventListener('click', event => {
+                event.preventDefault();
+                const parentDropdown = item.closest('.dropdown');
+                const dropdownMenu = parentDropdown.querySelector('.dropdown-menu');
+
+                // Toggle the dropdown menu
+                dropdownMenu.classList.toggle('show');
+                
+                // Close other dropdowns
+                document.querySelectorAll('.dropdown').forEach(dropdown => {
+                    if (dropdown !== parentDropdown) {
+                        dropdown.querySelector('.dropdown-menu').classList.remove('show');
+                    }
+                });
+            });
+        });
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', event => {
+            if (!event.target.closest('.dropdown')) {
+                document.querySelectorAll('.dropdown-menu.show').forEach(menu => {
+                    menu.classList.remove('show');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

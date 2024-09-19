@@ -1,0 +1,68 @@
+{% extends '../landingpage/landingpage.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/customer_documentupload.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+
+
+<body>
+    
+    <nav id="na">
+        <marquee behavior="" direction=""  style="z-index: 0;"><h1>Welcome To Sudeeksha Banking!!</h1></marquee>
+        
+    </nav>
+    <div class="nav">
+        <h1>Documents</h1>
+        <p>Uploading Documents!!!</p>
+    </div>
+    <div class="main-section" style="margin-bottom: 40px;">
+        <div class="main-left">
+            <img src="{% static 'img/customer_document.jpg' %}" alt="">
+
+        </div>
+        <div class="main-right">
+            <div class="a2">
+                <label for="">Upload PassportSize Photo</label>
+                <input type="file" placeholder="Type Your Message"  id="photo" name="photo" required> 
+            </div>
+            <div class="a2">
+                <label for="">Aadhar Card</label>
+                <input type="file" placeholder="Type Your Message"  id="aadhar_card" name="aadhar_card" required>
+            </div>
+
+            <div class="a2">
+                <label for="">PanCard</label>
+                <input type="file" placeholder="Type Your Message"  name="pan_card" id="pan_card" required>
+            </div>
+            <br>
+            <button id="but" onclick="redirect()">Upload</button>
+        </div>
+    </div>
+
+    <script>
+        function redirect(){
+            var photo = $('#photo').val();
+            var aadhar = $('#aadhar_card').val();
+            var pan = $('#pan_card').val();
+                   
+            $.ajax({
+            type: "POST",
+            url: "/customer/create_documents",
+            data: {"photo": photo, "aadhar": aadhar, "pan": pan},
+            success: function(data)
+            {
+                window.location.replace("/customer/nominee");
+            }
+                    
+                   });
+
+
+
+        }
+    </script>
+   
+</body>
+</html>
+{% endblock body %}

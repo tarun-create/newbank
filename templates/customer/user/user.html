@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<link rel="stylesheet" href="{% static '/css/customer_user.css' %}">
+
+</head>
+<body>
+
+    <div class="nav">
+        <h1>Create User</h1>
+        <p>creating a new User!!</p>
+    </div>
+    <div class="main-section" style="margin-bottom: 40px;">
+        <div class="main-left">
+            <img src="{% static 'img/sign-page-abstract-concept-illustration_335657-3875.avif' %}" alt="">
+
+        </div>
+        <div class="main-right">
+            <div class="a1">
+                <input type="text" placeholder="Enter Your Name" required>
+                <input type="text" placeholder="Enter Your Mobile Number" maxlength="10" minlength="10" required>
+            
+            </div>
+
+            <div class="a1">
+                <input type="text" placeholder="Enter Your EmailId" required>
+                <select name="" id="" style="width: 300px; height:40px">
+                    <option value="" disabled selected>User Type(Role)</option>
+                    <option value="Admin">Admin</option>
+                    <option value="Customer">Customer</option>
+                    <option value="Agent">Agent</option>
+                
+                </select>
+                
+                <!-- <input type="text" placeholder="Enter Your Intrested Product" required> -->
+
+            </div>
+
+            <div class="a2">
+                <input type="password" placeholder="Enter your Password" >
+
+
+            </div>
+
+            
+            <button id="but" >Create</button>
+
+
+           
+
+
+        </div>
+
+    </div>
+</body>
+</html>

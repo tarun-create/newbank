@@ -1,0 +1,82 @@
+{% extends '../landingpage/landingpage.html' %}
+{% load static %}
+{% block body %}
+
+<link rel="stylesheet" href="{% static 'css/customer_nominee.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+
+
+<body>
+    
+    <nav id="na">
+        <marquee behavior="" direction=""  style="z-index: 0;"><h1>Welcome To Sudeeksha Banking!!</h1></marquee>
+        
+    </nav>
+    <div class="nav">
+        <h1>Nominee</h1>
+        <p>creating a Nominee!!</p>
+    </div>
+    <div class="main-section" style="margin-bottom: 40px;">
+        <div class="main-left">
+            <img src="{% static 'img/customer_nominee.jpg' %}" alt="">
+
+        </div>
+        <div class="main-right">
+            <div class="a1">
+                <input type="text" placeholder="Enter  Name" required id="name">
+                <input type="text" placeholder="Enter  Mobile Number" maxlength="10" minlength="10" required id="mobile">
+            
+            </div>
+
+            <div class="a1">
+                <input type="text" placeholder="Enter  Relationship" required id="relationship">
+                <input type="date" placeholder="Enter  Dob" required id="date">
+
+                
+                
+                <!-- <input type="text" placeholder="Enter Your Intrested Product" required> -->
+
+            </div>
+
+            <div class="a2">
+                <input type="text" placeholder="Nominee Address" required id="address">
+
+
+            </div>
+
+            <br>
+
+            <button id="but" onclick="nominee()">Next</button>
+
+        </div>
+
+    </div>
+
+    <script>
+        function nominee(){
+
+            var name = $('#name').val();
+            var mobile = $('#mobile').val();
+            var date = $('#date').val();
+            var relationship = $('#relationship').val();
+            var address = $('#address').val();
+
+
+            $.ajax({
+            type: "POST",
+            url: "/customer/create_nominee",
+            data: {"username": name, "mobile": mobile, "relationship": relationship, "date": date,"address":address},
+            success: function(data)
+            {
+                window.location.replace("/customer/references");
+            }
+                    
+             });
+        }
+    </script>
+   
+</body>
+</html>
+{% endblock body %}

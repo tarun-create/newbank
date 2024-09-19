@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static '/css/customer_signupform.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <div class="nav">
+        <h1>Signup</h1>
+        <p>Creating the Userr Account</p>
+    </div>
+    <div class="main-section" style="margin-bottom: 40px;">
+        <div class="main-left">
+            <img src="https://cdn.pixabay.com/photo/2021/07/12/10/55/bank-6406011_640.png" alt="">
+
+        </div>
+        <div class="main-right">
+            <div class="a1">
+                <input type="text" placeholder="Enter Your Name" required id="username">
+            
+            </div>
+
+            <div class="a1">
+                <input type="email" placeholder="Enter Your Email" required id="email">
+            </div>
+
+            <div class="a1">
+                <input type="password" placeholder="Enter Your Password" required id="pass">
+            </div>
+
+            <div class="a1">
+                <input type="password" placeholder="Enter Your Password Again" required id="confirmpass">
+            </div>
+
+            <div class="a1">
+                <select name="User Type" id="utype" style="height: 40px; width:300px">
+                    <option value="UserType" disabled selected >UserType</option>
+                    <option value="admin">Admin</option>
+                    <option value="customer">Customer</option>
+
+                </select>
+            </div>
+
+            
+
+            <p>Already have an account? <a href="/loginform">Login here</a></p>
+
+
+           
+
+            
+            <button id="but" onclick="check()">Signup</button>
+
+            <script>
+                function check()
+                {
+                   var name = $('#username').val();
+                   var mail = $('#email').val();
+                   var password = $('#pass').val();
+                   var utype = $('#utype').val();
+                   
+
+                   $.ajax({
+                    type: "POST",
+                    url: "/create_user",
+                    data: {"username": name, "email": mail, "pass": password, "utype": utype},
+                    success: function(data)
+                    {
+                        window.location.replace("/loginform");
+                    }
+                    
+                   });
+                }
+            </script>
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static '/css/customer_createcustomer.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+
+
+
+<body>
+    
+    <nav id="na">
+        <marquee behavior="" direction=""  ;><h1>Welcome To Sudeeksha Bankings!!</h1></marquee>
+        
+    </nav>
+    <div class="nav">
+        <h1>Create Customer</h1>
+        <p>creating a new Customer!!</p>
+    </div>
+    <div class="main-section" style="margin-bottom: 40px;">
+        <div class="main-left">
+            <img src="{% static 'img/customer_img.jpg' %}" alt="">
+
+        </div>
+        <div class="main-right">
+            <div class="a1">
+                <input type="text" placeholder="Enter Your Name"  id="user_name" name="user_name" required>
+                <input type="text" placeholder="Enter Your Mobile Number" maxlength="10" minlength="10"  id="mobile_no" name="mobile_no" required>
+            
+            </div>
+
+            <div class="a1">
+                <input type="text" placeholder="Enter Your EmailId"  id="email" name="email" required>
+                <select name="" id="utype" style="width: 300px; height:40px" >
+                    <option value="" disabled selected>Account Type</option>
+                    <option value="Savings">Savings</option>
+                    <option value="Current">Current</option>
+                    <option value="Loan">Loan</option>
+                    <option value="Salary">Salary</option>
+                
+                </select>
+                
+                <!-- <input type="text" placeholder="Enter Your Intrested Product" required> -->
+
+            </div>
+
+            <div class="a2">
+                <input type="text" placeholder="Type Your Message" id="message" name="message">
+
+
+            </div>
+
+            <br>    
+
+            <button id="but" onclick="redirect()">Next</button>
+
+
+        </div>
+
+    </div>
+
+    <script>
+        function redirect()
+        { 
+          
+            var name = $('#user_name').val();
+            var mobileno = $('#mobile_no').val();
+            var mail =$('#email').val();
+            var utype = $('#utype').val();
+            var Message =$('#message').val();
+            console.log(name);
+            console.log(mobileno);
+            console.log(mail);
+            console.log(Message);
+            console.log(utype);
+        
+
+            $.ajax({
+            type:'POST',
+            url:'/customer/create_account_user' ,
+            data : {"username":name , "email": mail, "mobile":mobileno ,"utype":utype,"message":Message },
+            success: function(data)
+            {
+                window.location.replace("/customer/document");
+            }
+           });
+
+        }
+
+
+
+
+
+
+    </script>
+   
+</body>
+</html>
+{% endblock body %}

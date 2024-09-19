@@ -1,0 +1,44 @@
+*{
+    box-sizing: border-box;
+
+}
+
+
+
+
+
+table,th,td{
+    border: 0.5px solid black;
+    border-collapse: collapse;
+    padding: 10px;
+    margin: 50px auto;
+}
+
+th,td{
+    
+    color:black;
+    font-weight: normal;
+    
+    
+}
+
+th{
+    color: rgba(116, 5, 5, 0.952);
+    font-weight: bold;
+    background-color: beige;
+}
+
+.da{
+    /* border: 2px solid red; */
+    height: auto;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 130px;
+    border-radius: 20px;
+    background-color: whitesmoke;
+    margin: 30px auto;
+    
+}

@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static '/css/customer_loginform.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <div class="nav">
+        <h1>Login</h1>
+        <p>Logging The user In</p>
+    </div>
+    <div class="main-section" style="margin-bottom: 40px;">
+        <div class="main-left">
+            <img src="{% static 'img/istockphoto-1352222142-170667a.jpg' %}" alt="">
+
+        </div>
+        <div class="main-right">
+            <div class="a1">
+                <input type="text" placeholder="Enter Your Name"  id="username" required>
+            
+             </div>
+
+            <div class="a1">
+                <input type="password" placeholder="Enter Your Password" id="pass" required>
+            </div>
+
+            <p>Don't have an account? <a href="/signupform">Sign up here</a></p>
+
+           
+
+            
+            
+            
+
+            <button id="but" onclick="check()">Login</button>
+
+    
+
+
+   <script>
+    function check()
+    {
+     var username = $("#username").val();
+     var pass = $("#pass").val();
+    
+     $.ajax({
+        type: "POST",
+        url: "/logincheck",
+        data: {"username": username,  "pass": pass},
+        success: function(data)
+        {
+            if (data["status"] == "pass")
+            {
+             
+             if(data["role"] == "admin")
+             {
+                window.location.replace("/admin")
+             }
+             else if(data["role"] == "customer")
+             {
+                window.location.replace("/UserDashboardView")
+             }
+             else
+             {
+                alert("role not found");
+             }
+            
+            }
+            else
+            {
+             alert("login failed");
+            }
+         }
+
+        
+        
+       });
+    }
+   </script> 
+</body>
+</html>
