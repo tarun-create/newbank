@@ -19,7 +19,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path("",include('customer.urls')),
-  
+    path("insurance/",include('insurance.urls')),
 
 ]
  
