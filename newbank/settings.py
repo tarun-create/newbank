@@ -38,11 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'customer',
-<<<<<<< HEAD
     'card',
-=======
     'loan',
->>>>>>> 7dfef60d227ea38e50476260c8beca9a77d6d42d
+    'account',
 ]
 
 MIDDLEWARE = [

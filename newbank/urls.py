@@ -19,12 +19,9 @@ from django.urls import path, include
 
 urlpatterns = [
     path("",include('customer.urls')),
-<<<<<<< HEAD
-    path("card/",include('card.urls')),
-=======
     path("loan/",include('loan.urls')),
->>>>>>> 7dfef60d227ea38e50476260c8beca9a77d6d42d
-  
+    path("card/",include('card.urls')),
+    path("account/",include('account.urls')),
 
 ]
  
