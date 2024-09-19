@@ -19,6 +19,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path("",include('customer.urls')),
+    path("card/",include('card.urls')),
   
 
 ]
