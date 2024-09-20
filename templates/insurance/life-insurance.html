@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudeeksha Bank Insurance - Life Insurance</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/life-insurance.css'%}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="#">Sudeeksha Bank Insurance</a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="{% url 'index' %}">Home</a></li> 
+                    <li><a href="{% url 'vehicle-insurance' %}">Vehicle Insurance</a></li>
+                    <li><a href="life-insurance.html">Life Insurance</a></li>
+                    <li><a href="{% url 'health-insurance' %}">Health Insurance</a></li>
+                </ul>
+            </nav>
+            <div class="marquee">
+                <h1>Life Insurance</h1>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <section class="insurance-details">
+                <h2>Life Insurance Application</h2>
+                <div class="form">
+                    <label for="full-name">Full Name:</label>
+                    <input type="text" id="full-name" name="full-name" required>
+
+                    <label for="dob">Date of Birth:</label>
+                    <input type="date" id="dob" name="dob" required>
+
+                    <label for="policy-amount">Policy Amount:</label>
+                    <input type="number" id="policy-amount" name="policy-amount" required>
+
+                    <label for="identity-doc">Upload Identity Document:</label>
+                    <input type="file" id="identity-doc" name="identity-doc" accept=".pdf,.jpg,.png" required>
+
+                    <button type="submit" onclick ="check()">Submit</button>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Sudeeksha Bank Insurance. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+<script>
+function check()
+{
+    var full_name = $('#full-name').val();
+    var dob = $('#dob').val();
+    var policy_amount=$('#policy-amount').val();
+    var identity_doc=$('#identity-doc').val();
+    
+
+    $.ajax({
+    type: "POST",
+    url:  "{% url 'LifeInsuranceApplication_check' %}" ,
+    data: {"full-name": full_name,"dob": dob,"policy_amount": policy_amount,"identity_doc": identity_doc},
+    success: function(data)
+    {
+        window.location.replace("/insurance/LifeInsuranceApplication_view");
+    }
+
+});
+}
+</script>
+</html>

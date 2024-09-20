@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    
+    <table class="table" style="border: 1px solid black;">
+        <thead>
+            <tr style="background-color: gray; color:beige;">
+                <td>full-name</td>
+                <td>dob</td>
+                <td>medical-history</td>
+                <td>health-doc</td>
+                <td>delete</td>
+                <td>update</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for obj in userdata %}
+            <tr>
+                <td><input id="full_name{{ obj.full_name }}" type="text" value="{{ obj.full_name }}" readonly> </td>
+                <td><input id="dob{{ obj.full_name }}" type="text" value="{{ obj.dob }}"> </td>
+                <td><input id="medical_history{{ obj.full_name }}" type="text" value="{{ obj.medical_history }}"> </td>
+                <td><input id="health_doc{{ obj.full_name }}" type="text" value="{{ obj.health_doc }}"> </td>
+                <td><button onclick="delete_record('{{ obj.full_name }}');">delete</button></td>
+                <td><button onclick="update_health('{{ obj.full_name }}');">update</button></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <script>
+        function delete_record(full_name) {
+            $.ajax({
+                type: "POST",
+                url: "/insurance/delete_health",
+                data: { "full_name": full_name },
+                success: function(data) {
+                    window.location.replace("/insurance/HealthInsuranceApplication_view");
+                }
+            });
+        }
+
+        function update_health(full_name) {
+            var dob = $('#dob' + full_name).val();
+            var medical_history = $('#medical_history' + full_name).val();
+            var health_doc = $('#health_doc' + full_name).val();
+        
+            $.ajax({
+                type: "POST",
+                url: '/insurance/update_health',
+                data: {
+                    fname: full_name,
+                    dob: dob,
+                    medical_history: medical_history,
+                    health_doc: health_doc
+                },
+                
+                success: function(data) {
+                    console.log(data);
+                    // Optionally, refresh the page or show a success message
+                }
+            });
+        }
+    </script>
+</body>
+</html>
