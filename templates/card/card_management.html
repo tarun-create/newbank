@@ -1,0 +1,271 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Management - Sudeeksha Banking</title>
+    <link rel="stylesheet" href="{% static 'css/card_management.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f9;
+            color: #333;
+        }
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            animation: fadeIn 1s ease-in;
+        }
+        header p {
+            font-size: 1.2rem;
+            margin: 10px 0;
+            animation: fadeIn 1.2s ease-in;
+        }
+        nav {
+            background-color: #0056b3;
+            padding: 10px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #ffc107;
+        }
+        .intro-section {
+            text-align: center;
+            padding: 50px 20px;
+            animation: fadeIn 1.5s ease-in;
+        }
+        .intro-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .intro-section p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+        .manage-cards-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .manage-cards-btn:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+        .main-section {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 40px;
+            animation: slideIn 0.5s ease;
+        }
+        .main-left {
+            flex: 1;
+            text-align: center;
+            padding: 20px;
+        }
+        .main-left img {
+            max-width: 100%;
+            height: auto;
+        }
+        .main-right {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .form {
+            max-width: 400px;
+            width: 100%;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+        .form:hover {
+            transform: translateY(-3px);
+        }
+        input, select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: border-color 0.3s;
+        }
+        input:focus, select:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+        button {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 4px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        button:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-university"></i> Sudeeksha Banking</h1>
+        <p>Your Trusted Banking Partner</p>
+    </header>
+
+    <nav>
+        <a href="#home"><i class="fas fa-home"></i> Homepage</a>
+        <a href="#accounts"><i class="fas fa-folder-open"></i> Accounts</a>
+        <a href="#loans"><i class="fas fa-money-bill-wave"></i> Loans</a>
+        <a href="#cards"><i class="fas fa-credit-card"></i> Cards</a>
+        <a href="#insurance"><i class="fas fa-shield-alt"></i> Insurance</a>
+    </nav>
+
+    <div class="intro-section" id="home">
+        <h2>Welcome to Card Management</h2>
+        <p>At Sudeeksha Banking, we are dedicated to providing a seamless card management experience. Whether you need to activate a new card, check your balance, or report a lost card, our platform is designed to meet all your needs with ease and security.</p>
+        <p>Managing your cards has never been easier. With our user-friendly interface, you can perform a variety of tasks with just a few clicks. From setting spending limits to tracking your expenses in real-time, our card management system empowers you to take control of your financial journey.</p>
+        <h3>Benefits of Card Management with Sudeeksha Banking:</h3>
+        <ul style="text-align: left; display: inline-block; margin: 0 auto; list-style-type: disc;">
+            <li><strong>Convenience:</strong> Access your card information and manage transactions from anywhere, at any time.</li>
+            <li><strong>Security:</strong> Our platform employs top-notch security measures to protect your financial information.</li>
+            <li><strong>Real-Time Monitoring:</strong> Track your spending and receive instant alerts for any card transactions.</li>
+            <li><strong>Card Controls:</strong> Easily set restrictions to prevent unauthorized use.</li>
+            <!-- <li><strong>Rewards Tracking:</strong> Monitor your rewards and cashback, helping you maximize your benefits.</li> -->
+            <li><strong>Customer Support:</strong> Our dedicated support team is here to assist with any queries or issues related to your card management.</li>
+        </ul>
+        <p>Explore the various options we offer to take control of your finances, ensuring that you have the best tools at your disposal for effective banking.</p>
+        <button class="manage-cards-btn" onclick="scrollToForm()">Manage Cards</button>
+    </div>
+
+    <div class="main-section" id="formSection" style="display:none;">
+        <div class="main-left">
+            <img src="{% static 'img/card_management.png' %}" alt="Card Management Image" style="height: 400px; width: auto;">
+        </div>
+        
+        <div class="main-right">
+            <div class="form">
+                <input type="number" placeholder="Card ID" id="card_id" required>
+                <input type="number" placeholder="Customer ID" id="customer_id" required>
+                <select id="card_type" required>
+                    <option value="" disabled selected>Select Card Type</option>
+                    <option value="debit">Debit</option>
+                    <option value="credit">Credit</option>
+                </select>
+                <input type="text" placeholder="Card Number" id="card_number" required pattern="\d{16}">
+                <input type="text" placeholder="Expiry Date (MM/YY)" id="expiry_date" required pattern="\d{2}/\d{2}">
+                <input type="text" placeholder="CVV" id="cvv" required pattern="\d{3}">
+                <select id="status" required>
+                    <option value="" disabled selected>Select Status</option>
+                    <option value="active">Active</option>
+                    <option value="blocked">Blocked</option>
+                </select>
+                <button id="but" type="button" onclick="check()">Check</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function scrollToForm() {
+            document.getElementById("formSection").style.display = "flex";
+            window.scrollTo({ top: document.getElementById("formSection").offsetTop, behavior: 'smooth' });
+        }
+
+        function check() {
+            var card_id = $('#card_id').val();
+            var customer_id = $('#customer_id').val();
+            var card_type = $('#card_type').val();
+            var card_number = $('#card_number').val();
+            var expiry_date = $('#expiry_date').val();
+            var cvv = $('#cvv').val();
+            var status = $('#status').val(); 
+
+            // Basic validation
+            if (!/^\d+$/.test(card_id) || !/^\d+$/.test(customer_id)) {
+                alert('Card ID and Customer ID must be numbers.');
+                return;
+            }
+            if (!/^\d{16}$/.test(card_number)) {
+                alert('Card Number must be 16 digits.');
+                return;
+            }
+            if (!/^\d{2}\/\d{2}$/.test(expiry_date)) {
+                alert('Expiry Date must be in MM/YY format.');
+                return;
+            }
+            if (!/^\d{3}$/.test(cvv)) {
+                alert('CVV must be 3 digits.');
+                return;
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "/card/take_card",
+                data: {
+                    "card_id": card_id,
+                    "customer_id": customer_id,
+                    "card_type": card_type,
+                    "card_number": card_number,
+                    "expiry_date": expiry_date,
+                    "cvv": cvv,
+                    "status": status
+                },
+                success: function(data) {
+                    window.location.replace("/cardadm");
+                }
+            });
+        }
+    </script>
+</body>
+</html>
