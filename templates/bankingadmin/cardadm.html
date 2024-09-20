@@ -1,0 +1,118 @@
+{% extends './index.html' %}
+{% load static %}
+{% block body_block %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Management</title>
+    <link rel="stylesheet" href="{% static 'css/card_management.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <nav id="na">
+        <marquee behavior="" direction=""><h1>Welcome To Sudeeksha Banking!!</h1></marquee>
+    </nav>
+    <div class="back">
+    <div class="nav">
+        <h1>Card Management</h1>
+        <p>Manage Your Cards Here!</p>
+    </div>
+    <div class="main-section">
+        <div class="main-left">
+            <img src="{% static 'img/card_management.png' %}" alt="">
+        </div>
+        <div class="main-right">
+            <div class="form">
+                <div class="a1">
+                    <input type="number" placeholder="Card ID" id="card_id" required>
+                    <input type="number" placeholder="Customer ID" id="customer_id" required>
+                </div>
+                <div class="a2">
+                    <select id="card_type" required>
+                        <option value="" disabled selected>Select Card Type</option>
+                        <option value="debit">Debit</option>
+                        <option value="credit">Credit</option>
+                    </select>
+                </div>
+                <div class="a1">
+                    <input type="text" placeholder="Card Number" id="card_number" required pattern="\d{16}">
+                </div>
+                <div class="a1">
+                    <input type="text" placeholder="Expiry Date (MM/YY)" id="expiry_date" required pattern="\d{2}/\d{2}">
+                    <input type="text" placeholder="CVV" id="cvv" required pattern="\d{3}">
+                </div>
+                <div class="a2">
+                    <select id="status" required>
+                        <option value="" disabled selected>Select Status</option>
+                        <option value="active">Active</option>
+                        <option value="blocked">Blocked</option>
+                    </select>
+                </div>
+                <br>
+                <button id="but" type="button" onclick="check()">Check</button>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        function check() {
+            var card_id = $('#card_id').val();
+            var customer_id = $('#customer_id').val();
+            var card_type = $('#card_type').val();
+            var card_number = $('#card_number').val();
+            var expiry_date = $('#expiry_date').val();
+            var cvv = $('#cvv').val();
+            var status = $('#status').val(); 
+            
+            // Basic validation (HTML5 handles most, but you can add more checks here if needed)
+            if (!/^\d+$/.test(card_id) || !/^\d+$/.test(customer_id)) {
+                alert('Card ID and Customer ID must be numbers.');
+                return;
+            }
+            if (!/^\d{16}$/.test(card_number)) {
+                alert('Card Number must be 16 digits.');
+                return;
+            }
+            if (!/^\d{2}\/\d{2}$/.test(expiry_date)) {
+                alert('Expiry Date must be in MM/YY format.');
+                return;
+            }
+            if (!/^\d{3}$/.test(cvv)) {
+                alert('CVV must be 3 digits.');
+                return;
+            }
+
+            console.log("Card ID: ", card_id);
+            console.log("Customer ID: ", customer_id);
+            console.log("Card Type: ", card_type);
+            console.log("Card Number: ", card_number);
+            console.log("Expiry Date: ", expiry_date);
+            console.log("CVV: ", cvv);
+            console.log("Status: ", status);
+
+            $.ajax({
+                type: "POST",
+                url: "/card/take_card",
+                data: {
+                    "card_id": card_id,
+                    "customer_id": customer_id,
+                    "card_type": card_type,
+                    "card_number": card_number,
+                    "expiry_date": expiry_date,
+                    "cvv": cvv,
+                    "status": status
+                },
+                success: function(data) {
+                    window.location.replace("/check_card");
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
+
+{% endblock%}

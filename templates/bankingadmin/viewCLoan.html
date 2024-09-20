@@ -1,0 +1,88 @@
+{% extends './index.html' %}
+{% load static %}
+{% block body_block %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="{% static '/css/customer_signupform.css' %}"> -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        .table-container {
+            max-height: 400px; /* Set the height as needed */
+            overflow-y: auto; /* Add vertical scrollbar */
+            border: 1px solid black; /* Optional: to visualize the container */
+        }
+    </style>
+</head>
+<body>
+    <div class="table-container">
+    <table class="table" style="border: 1px solid black;">
+        <thead>
+            <tr style="background-color: gray; color:beige;">
+                <td>id</td>
+                <td>type</td>
+                <td>amount</td>
+                <td>start</td>
+                <td>end</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for obj in userdata %}
+            <tr>
+                <td><input id="ids{{obj.ids}}" type="text" value= {{obj.ids}}></td>
+                <td><input id="type{{obj.ids}}" type="text" value={{obj.type}}></td>
+                <td><input id="amount{{obj.ids}}" type="text" value={{obj.amount}}></td>
+                <td><input id="start{{obj.ids}}" type="text" value= {{obj.start}} type="date"></td>
+                <td><input id="end{{obj.ids}}" type="text" value= {{obj.end}} type="date"></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+
+    <script>
+        function delete_lrecord(id){
+            $.ajax({
+            type: "POST",
+            url: "/loan/delete_loan",
+            data: {"ids": ids},
+            success: function(data)
+            {
+                window.location.replace("/loan/view_loan");
+            }
+            
+           });
+        }
+
+        function updaterec(ids)
+        {
+        var type = $('#type'+ids).val();
+        var amount = $('#amount'+ids).val();
+        var start = $('#start'+ids).val();
+        var end = $('#end'+ids).val();
+
+        $.ajax({
+            type:'POST',
+            url:'/loan/update_loan_details' ,
+            data : {"ids":ids, "type":type , "amount": amount, "start":start, "end":end},
+            success: function(data)
+            {
+                window.location.replace("/loan/view_loan");
+            }
+           });
+        }
+
+    </script>
+
+
+</body>
+</html>
+{% endblock%}
+
