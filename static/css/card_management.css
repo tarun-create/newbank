@@ -1,0 +1,111 @@
+/* General styles */
+* {
+   
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigation styles */
+nav {
+    height: 60px;
+    border-bottom: 1px solid black;
+}
+
+#na {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: blue;
+    font-size: larger;
+}
+
+/* Navigation text styling */
+marquee h1 {
+    margin: 0;
+}
+
+/* Main container styles */
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100px;
+}
+
+.back{
+    background-image: url('./white_bg_forms\ -\ Copy.jpg');
+    background-size: 100%;
+}
+
+.main-section {
+    
+    display: flex;
+    justify-content: space-evenly;
+    margin-left: 150px;
+    margin-right: 150px;
+    gap: 30px;
+    margin-top: 50px;
+}
+
+/* Main left section styles */
+.main-left img {
+    height: 350px;
+    width: 350px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+/* Main right section styles */
+.main-right {
+    width: 800px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: whitesmoke;
+    padding: 20px;
+}
+
+/* Form styles */
+.form {
+    background-image: url("./abstract-view-urban-scene-skyscrapers.jpg");
+    background-size: 100%;
+    width: 100%;
+}
+
+/* Input field styles */
+.a1 input,
+.a2 select {
+    height: 40px;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Styles for the last input field with more margin */
+.a2 select {
+    margin-bottom: 20px;
+}
+
+/* Button styles */
+#but {
+    height: 50px;
+    width: 150px;
+    border-radius: 20px;
+    background-color: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#but:hover {
+    background-color: darkblue;
+}

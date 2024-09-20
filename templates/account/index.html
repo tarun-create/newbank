@@ -1,0 +1,147 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'css/account_styles.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+</head>
+
+<body>
+    <div id="parent">
+        <div class="top-navbar">
+            <div class="logo">Sudeeksha Bank</div>
+            <div class="nav-links">
+                <a href="#">Account</a>
+                <a href="#">Cards</a>
+                <a href="#">Loans</a>
+                <a href="#">Insurance</a>
+                <a href="#">Payments</a>
+                <a href="#">More</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-navbar">
+        <div class="welcome-text">Welcome Back!</div>
+        <div class="search-bar">
+
+            <input type="text" placeholder="Search...">
+        </div>
+        <div class="login-button">
+            <button type="submit" class="" >Login</button>
+        </div>
+    </div>
+
+
+
+
+    <div class="background-section">
+        <div class="overlay-text">Empowering Your Financial Future with Trust and Innovation.
+            <!-- <p>"Discover a new era of banking designed to help you achieve your goals <br> with cutting-edge technology and unparalleled security."</p> -->
+        </div>
+    </div>
+    <div class="marquee">
+        <marquee behavior=" " direction="">Celebrating our First year @Sudeeksha Banks </marquee>
+    </div>
+
+
+    <section class="about-services">
+        <h2>About Our Services</h2>
+        <div class="service">
+            <img src="{% static 'img/account_deposit.jpg'%}" alt="Deposits">
+            <h3>Deposits</h3>
+            <p>Secure and flexible deposit options tailored to your financial goals.</p>
+        </div>
+        <div class="service">
+            <img src="{% static 'img/account_Credit.jpg'%}" alt="Cards">
+            <h3>Cards</h3>
+            <p>Choose from a range of credit and debit cards with excellent benefits.</p>
+        </div>
+        <div class="service">
+            <img src="{% static 'img/account_Loans.jpg'%}" alt="Loans">
+            <h3>Loans</h3>
+            <p>Personal, home, and auto loans designed to meet your needs.</p>
+        </div>
+        <div class="service">
+            <img src="{% static 'img/account_insurance.jpg'%}" alt="Insurance">
+            <h3>Insurance</h3>
+            <p>Protect yourself and your loved ones with our comprehensive plans.</p>
+        </div>
+    </section>
+
+    <div class="requ">
+        <div class="text1">
+
+            <h1>An Account for <br>Every Person,<br>Every Business</h1>
+            <p>From Personal to business,we've got just what you need and more</p>
+            <a href='/account/form'><button >Check</button></a>
+        </div>
+        <div class="req">
+            <img src="{% static 'img/account_friends.jpg'%}" alt="">
+        </div>
+    </div>
+    <div class="account">
+        
+        <div class="text">
+            <h1>Types of Accounts</h1>
+            <p>At Sudeeksha Bank, we understand that each individual has unique banking needs, which is why we offer a
+                diverse <br> range of accounts to ensure there's a perfect fit for every person and every necessity. Our
+                savings account <br>provide the perfect balance of growth and accessibility with tailored services to
+                meet your basic banking <br> needs with no complications, while also offering various types of salary
+                accounts, privileged savings <br> accounts and, accounts for trusts and associations - opening the door
+                to a range of value-added benefits. At <br> the heart of all these offerings is our commitment to secure
+                and trustworthy banking, ensuring you bank with peace <br> of mind and ease. With us, you're not just
+                choosing an account; you're embracing a banking <br>experience that's as dynamic and diverse as you are.
+            </p>
+        </div>
+        <div class="type-of">
+            <div class="type">
+                <h3>Salary Account</h3>
+                <p>Maximize your earnings with unique benefits combined with easy money management</p>
+                <a href='/account/salary'><h4>View your account <i class='bx bx-right-arrow-alt'></i> </h4></a>
+            </div>
+    
+            <div class="type">
+                <h3>Genaral Saving Account</h3>
+                <p>Maximize your earnings with unique benefits combined with easy money management</p>
+                <h4>View your account <i class='bx bx-right-arrow-alt'></i> </h4>
+            </div>
+    
+            <div class="type">
+                <h3>Savings Account</h3>
+                <p>Maximize your earnings with unique benefits combined with easy money management</p>
+                <h4>View your account <i class='bx bx-right-arrow-alt'></i> </h4>
+            </div>
+
+            <div class="type">
+                <h3>Salary Account</h3>
+                <p>Maximize your earnings with unique benefits combined with easy money management</p>
+                <h4>view your account </h4>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+
+
+
+    <footer>
+        <div class="footer">
+            <p>&copy;Sudheeksha Bank
+            </p>
+        </div>
+       
+    </footer>
+
+
+
+
+</body>
+
+</html>

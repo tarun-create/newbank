@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Status</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{% static '/css/loan_status.css' %}">
+
+</head>
+<body>
+    <nav id="na">
+        <marquee behavior="" direction=""><h1>Welcome To Sudeeksha Banking!</h1></marquee>
+    </nav>
+    <div id="heading">                                                          
+        <h1>Check Loan Status</h1>
+    </div>
+    <div class="main-section">
+        <div class="left">
+            <img src="{% static '/img/loan_loan.png' %}" alt="">
+        </div>
+        <div class="right">
+            <div>
+                <div class="form-group">
+                    <label>Enter Loan Id:</label>
+                    <input type="number" id="id1" placeholder="Enter Loan id" >
+                </div>
+
+                <div class="form-group">
+                    <label>Enter Account Number:</label>
+                    <input type="number" id="acc1" placeholder="Enter Account Number" >
+                </div>
+
+                <div class="form-group">
+                    <label>Enter Mobile Number:</label>
+                    <input type="number" id="cmob" placeholder="Enter Mobile Number" >
+                </div>
+
+                <div class="form-btn">
+                    <button type="submit" onclick="check()">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function check()
+        {
+           var id1 = $('#id1').val();
+           var acc1 = $('#acc1').val();
+           var cmob = $('#cmob').val();
+           console.log("Hello world!");
+           console.log("id: ", id1);
+           console.log("acc: ", acc1);
+           console.log("cmob: ", cmob);
+
+           $.ajax({
+            type: "POST",
+            url: "/loan/check_status",
+            data: {"id1": id1, "acc1": acc1, "cmob": cmob},
+            success: function(data)
+            {
+                window.location.replace("/loan/view_lstatus");
+            }
+            
+           });
+        }
+    </script>
+    
+</body>
+</html>

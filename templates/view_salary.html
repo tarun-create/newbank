@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static '/css/customer_signupform.css' %}">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    
+    <table class="table" style="border: 1px solid black;">
+        <thead>
+            <tr style="background-color: gray; color:beige;">
+                <td>Account</td>
+                <td>branch</td>
+                <td>Delete</td>
+
+            </tr>
+        </thead>
+        <tbody>
+            '{% for obj in userdata %}'
+            <tr>
+                <td>{{ obj.acc }} </td>
+                <td>{{ obj.branch }}</td>
+                <td><button onclick="delete_record('{{obj.acc}}');">Delete</button></td>
+            </tr>
+            '{% endfor %}'
+        </tbody>
+    </table>
+
+    <script>
+        function delete_record(acc)
+        {
+            $.ajax({
+            type: "POST",
+            url: "/account/deleteaccount",
+            data: {"account": acc},
+            success: function(data)
+            {
+                window.location.replace("/account/view_salary")
+            }
+            
+           });
+        }
+
+           
+        
+    </script>
+
+</body>
+</html>
