@@ -1,0 +1,278 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    padding: 0;
+}
+
+.top-navbar {
+    display: flex; /* Flexbox layout for navbar */
+    justify-content: space-around; /* Space out items evenly */
+    align-items: center; /* Center items vertically */
+    position: fixed; /* Fixed position relative to the viewport */
+    top: 0; /* Stick to the top */
+    left: 0; /* Stick to the left */
+    width: 100%; /* Full width */
+    background-color:#007bff; /* Background color */
+    color: #fff; /* Text color */
+    padding: 11px; /* Padding for spacing */
+    
+    gap: 550px;
+    
+
+}
+#parent{
+    position: fixed;
+    z-index: 1;
+}
+
+.top-navbar .logo {
+    font-size: 28px;
+   
+    font-weight: bold;
+}
+
+.top-navbar .nav-links {
+    display: flex;
+    gap: 15px;
+}
+
+.top-navbar .nav-links a {
+    color: #fff;
+    text-decoration: none;
+}
+
+
+
+.bottom-navbar {
+    background-color: #f4f4f4;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-top: 4%;
+    /* position: sticky;
+    top: 0%; */
+    /* position: fixed; */
+    /* justify-content: space-between; */
+}
+
+.bottom-navbar .welcome-text {
+    font-size: 20px;
+    padding-left: 8px;
+    
+    
+}
+
+.bottom-navbar .search-bar input {
+    padding: 5px 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 400px;
+    height: 20px;
+    /* justify-content: end; */
+    
+
+}
+
+.bottom-navbar .login-button button {
+    padding: 8px 25px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-end;
+    margin-left: 600px;
+}
+
+.background-section {
+    position: relative;
+    height: 500px; /* Adjust as needed */
+    background-image: url('../img/account_bank2.jpg'); 
+    background-size: cover;
+    background-position: center;
+    margin-top: 0;
+    margin-bottom: 0; /* Adjust spacing as needed */
+}
+    
+.overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(255, 255, 255);
+    font-size: 2em; 
+    text-align: center;
+    background-color: rgba(192, 190, 190, 0.808); 
+    padding: 20px; 
+    border-radius: 10px ; 
+}
+
+
+
+/* Footer styling */
+
+
+.marquee{
+    background-color: gold;
+    /* justify-content: center; */
+    text-align: center;
+    padding: 8px;
+
+}
+
+/* Add these styles to your existing CSS file */
+
+/* About Services Section */
+.about-services {
+    padding: 40px;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+.about-services h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.service {
+    display: inline-block;
+    width: 22%;
+    height: 50%;
+    margin: 10px;
+    /* vertical-align: top; */
+    background-color: white;
+    border-radius: 8PX;
+}
+
+.service img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px 8px 0px 0px;
+}
+
+.service h3 {
+    font-size: 20px;
+    margin: 10px 0;
+    color: #007bff;
+}
+
+.service p {
+    color: #555;
+}
+
+
+.requ{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    font-size: 20px;
+    
+    color: black;
+    align-items: center;
+    
+}
+
+.req img{
+    margin-top: 10px;
+    height: 400px;
+    border-radius: 15px;
+    width: 600px;
+    /* object-fit: cover; */
+}
+
+.requ button{
+    width: 180px;
+    height: 35px;
+    border-radius: 8px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    /* border-color: #ffffff; */
+    border: none;
+    /* transition: background-color 0.3s ease; */
+}
+
+.text1{
+    
+    /* background-color: #f4f4f4; */
+    width: 400px;
+    height: 400px;
+    align-content: center;
+    text-align: start;
+    border-radius: 10px;
+    
+}
+.text1 h1{
+    text-align: start;
+}
+.account{
+    text-align: center;
+    background-color:  #f4f4f4;
+    padding: 10px;
+    
+}
+
+
+.account p{
+    font-size: 18px;
+}
+
+.account h1{
+    font-weight: 700;
+}
+
+
+
+.type-of{
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    
+}
+
+.type{
+    border-radius: 20px;
+    background-color: #007bff36;
+    width: 33%;
+    height: 180px;
+    padding: 10px;
+    /* transition: transform 0.3s; */
+    flex: 0 0 auto;
+    gap: 20px;
+}
+/* .type:hover{
+    transform: translateY(5px);
+} */
+
+.type h3 p{
+    
+    text-align: center;
+
+}
+
+.type h4{
+    padding-top: 30px;
+    align-items: end;
+    justify-content: end;
+    text-align: end;
+    color: #007bff;
+}
+.type h4:hover{
+    cursor: pointer;
+}
+
+
+.footer {
+    background-color: #333;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    height: 40px;
+    align-content: center;
+    color: white;
+}
