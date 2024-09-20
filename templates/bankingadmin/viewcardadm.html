@@ -1,0 +1,147 @@
+{% extends './index.html' %}
+{% load static %}
+{% block body_block %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Management</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        thead {
+            background-color: #007bff;
+            color: #fff;
+        }
+        tbody tr:hover {
+            background-color: #f1f1f1;
+            transition: background-color 0.3s ease;
+        }
+        button {
+            border: none;
+            padding: 6px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        .btn-delete {
+            background-color: #dc3545;
+            color: white;
+        }
+        .btn-delete:hover {
+            background-color: #c82333;
+        }
+        .btn-update {
+            background-color: #28a745;
+            color: white;
+        }
+        .btn-update:hover {
+            background-color: #218838;
+        }
+        .icon {
+            margin-right: 8px;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Card Management</h1>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Card ID</th>
+                    <th>Customer ID</th>
+                    <th>Card Type</th>
+                    <th>Card Number</th>
+                    <th>Expiry Date</th>
+                    <th>CVV</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for obj in userdata %}
+                    <tr>
+                        <td><input id="card_id{{ obj.customer_id }}" type="text" class="form-control" value="{{ obj.card_id }}"></td>
+                        <td><input id="customer_id{{ obj.customer_id }}" type="text" class="form-control" value="{{ obj.customer_id }}"></td>
+                        <td><input id="card_type{{ obj.customer_id }}" type="text" class="form-control" value="{{ obj.card_type }}"></td>
+                        <td><input id="card_number{{ obj.customer_id }}" type="text" class="form-control" value="{{ obj.card_number }}"></td>
+                        <td><input id="expiry_date{{ obj.customer_id }}" type="text" class="form-control" value="{{ obj.expiry_date }}"></td>
+                        <td><input id="cvv{{ obj.customer_id }}" type="text" class="form-control" value="{{ obj.cvv }}"></td>
+                        <td><input id="status{{ obj.customer_id }}" type="text" class="form-control" value="{{ obj.status }}"></td>
+                        <td>
+                            <button class="btn btn-delete" onclick="delete_record('{{ obj.customer_id }}');">
+                                <i class="fas fa-trash icon"></i>Delete
+                            </button>
+                            <button class="btn btn-update" onclick="updaterec('{{ obj.customer_id }}');">
+                                <i class="fas fa-edit icon"></i>Update
+                            </button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+    function updaterec(customer_id) {
+        var card_id = $('#card_id' + customer_id).val();
+        var card_type = $('#card_type' + customer_id).val();
+        var card_number = $('#card_number' + customer_id).val();
+        var expiry_date = $('#expiry_date' + customer_id).val();
+        var cvv = $('#cvv' + customer_id).val();
+        var status = $('#status' + customer_id).val();
+
+        $.ajax({
+            type: "POST",
+            url: "/card/update_card_details",
+            data: {
+                "card_id": card_id,
+                "customer_id": customer_id,
+                "card_type": card_type,
+                "card_number": card_number,
+                "expiry_date": expiry_date,
+                "cvv": cvv,
+                "status": status
+            },
+            success: function(data) {
+                window.location.replace("/card/check_card");
+            }
+        });
+    }
+
+    function delete_record(customer_id) {
+        $.ajax({
+            type: "POST",
+            url: "/card/deleteuser",
+            data: { "customer_id": customer_id },
+            success: function(data) {
+                window.location.replace("/card/check_card");
+            }
+        });
+    }
+    </script>
+</body>
+</html>
+
+{% endblock %}

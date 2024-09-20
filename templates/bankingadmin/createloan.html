@@ -1,0 +1,113 @@
+{% extends './index.html' %}
+{% load static %}
+{% block body_block %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Take a Loan</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{% static '/css/loan_apply.css' %}">
+</head>
+<body>
+    
+    <div class="head">
+            <h1>Loan Application Form</h1>
+            <p>Let’s get started,Ready to take the next step?</p>
+    </div>
+    <div class="main-section">
+        <div class="left">
+            <img src="{% static '/img/loan_loan.png' %}" alt="">
+        </div>
+        
+        <div class="right">
+            <div class="form">
+                
+                <div class="form-group">
+                    <label for="email">Customer Name:</label>
+                    <input type="text" id="cus_id" name="cusid">
+                </div>
+                
+                <div class="form-group">
+                    <label for="loan-type">Loan Type:</label>
+                    <select id="loan_type" name="loan-type">
+                        <option value="home">Home Loan</option>
+                        <option value="personal">Personal Loan</option>
+                        <option value="business">Business Loan</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="amount">Loan Amount:</label>
+                    <input type="number" id="amount" name="amount">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Intrest Rate:</label>
+                    <input type="number" id="ir" name="ir" >
+                </div>
+
+                <div class="form-group">
+                    <label for="Account">EMI Amount:</label>
+                    <input type="number" id="emi_amt" name="emiam">
+                </div>
+
+                <div class="form-group">
+                    <label for="Account">Loan start date:</label>
+                    <input type="date" id="s_date" name="Account">
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Loan End Date</label>
+                    <input type="date" id="e_date">
+                </div>
+
+                <div class="form-group">
+                    <label for="loan-type">Status:</label>
+                    <select id="status" name="status" required>
+                        <option value="home">Active</option>
+                        <option value="personal">Closed</option>
+                    </select>
+                </div>
+                
+                <div class="form-btn">
+                    <button type="submit" onclick="check()">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function check()
+        {
+           var ids = $('#cus_id').val();
+           var type = $('#loan_type').val();
+           var amount = $('#amount').val();
+           var intrest = $('#ir').val();
+           var emi = $('#emi_amt').val();
+           var start = $('#s_date').val();
+           var end = $('#e_date').val();
+           var status = $('#status').val();
+           console.log("name: ", name);
+           console.log("ids: ", ids);
+           console.log("amt: ", amount);
+           console.log("intrest: ", intrest);
+
+           $.ajax({
+            type: "POST",
+            url: "/loan/create_loan",
+            data: {"ids": ids, "type": type, "amount": amount, "ir": intrest, "emi": emi, "start": start, "end": end, "status": status},
+            success: function(data)
+            {
+                window.location.replace("/loan/view_loan");
+            }
+            
+           });
+        }
+    </script>
+
+</body>
+</html>
+{% endblock%}

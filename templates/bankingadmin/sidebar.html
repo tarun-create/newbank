@@ -59,10 +59,8 @@
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Custom Components:</h6>
-                <a class="collapse-item" href="">CREATE</a>
-                <a class="collapse-item" href="cards.html">UPDATE</a>
-                <!-- <a class="collapse-item" href="/user/view_useronly">VIEW</a> -->
-                <!-- <a class="collapse-item" href="/user/view_user">DELETE</a> -->
+                <a class="collapse-item" href="{% url 'accountcheck' %}">CREATE</a>
+                <a class="collapse-item" href="{% url 'form_check' %}">UPDATE</a>
             </div>
         </div>
     </li>
@@ -78,10 +76,8 @@
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Custom Utilities:</h6>
-                <a class="collapse-item" href="">CREATE</a>
-                <a class="collapse-item" href="cards.html">UPDATE</a>
-                <!-- <a class="collapse-item" href="/user/view_useronly">VIEW</a> -->
-                <!-- <a class="collapse-item" href="/user/view_user">DELETE</a> -->
+                <a class="collapse-item" href="{% url 'cardadm' %}">CREATE</a>
+                <a class="collapse-item" href="{% url 'check_card' %}">VIEW</a>
             </div>
         </div>
     </li>
@@ -96,10 +92,16 @@
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Custom Utilities:</h6>
-                <a class="collapse-item" href="">CREATE</a>
-                <a class="collapse-item" href="cards.html">UPDATE</a>
-                <!-- <a class="collapse-item" href="/user/view_useronly">VIEW</a> -->
-                <!-- <a class="collapse-item" href="/user/view_user">DELETE</a> -->
+                <a class="collapse-item" href="{% url 'lifeinsurancecheck' %}">CREATE</a>
+                <a class="collapse-item" href="{% url 'LifeInsuranceApplication_view' %}">VIEW</a>
+
+                <h6 class="collapse-header">Health Insurance:</h6>
+                <a class="collapse-item" href="{% url 'healthinsurancecheck' %}">CREATE</a>
+                <a class="collapse-item" href="{% url 'HealthInsuranceApplication_view' %}">VIEW</a>
+
+                <h6 class="collapse-header">Vehicle Insurance:</h6>
+                <a class="collapse-item" href="{% url 'vehicleinsurancecheck' %}">CREATE</a>
+                <a class="collapse-item" href="{% url 'VehicleInsuranceApplication_view' %}">VIEW</a>
             </div>
         </div>
     </li>
@@ -114,10 +116,9 @@
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Custom Utilities:</h6>
-                <a class="collapse-item" href="">CREATE</a>
-                <a class="collapse-item" href="cards.html">UPDATE</a>
-                <!-- <a class="collapse-item" href="/user/view_useronly">VIEW</a> -->
-                <!-- <a class="collapse-item" href="/user/view_user">DELETE</a> -->
+                <a class="collapse-item" href="{% url 'takeloan' %}">CREATE</a>
+                <a class="collapse-item" href="{% url 'view_cloan' %}">VIEW</a>
+                <a class="collapse-item" href="{% url 'view_loan' %}">UPDATE</a>
             </div>
         </div>
     </li>
