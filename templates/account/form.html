@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/account_form.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <nav id="na">
+        <!-- <marquee behavior="" direction=""></marquee> -->
+        <h1>Welcome To Sudeeksha Banking!!</h1>
+    </nav>
+    <div class="nav">
+        <h1>Account</h1>
+        <p>Manage your Account!!</p>
+    </div>
+    <div class="main-section">
+        <div class="main-left">
+            <img src="{% static 'img/account_Credit.jpg'%}" alt="">
+
+        </div>
+        <div class="main-right">
+            <div class="a1">
+                
+                <input type="text" placeholder="Name" id="Username">
+        
+                <input type="text" placeholder="Account Number" id="account_number">
+
+            </div>
+
+            <div class="a1">
+                <input type="text" placeholder="IFSC Code" id="ifsc">
+                <input type="text" placeholder="Branch" id="branch">
+
+            </div>
+
+            <!-- <div class="a2">
+                <input type="text" placeholder="Type Your Message">
+
+
+            </div> -->
+
+            <br>
+
+            <button id="but" onclick="check();">Check</button>
+
+        </div>
+
+    </div>
+
+    <script>
+        function check()
+        {
+           var name = $('#Username').val();
+           var acc = $('#account_number').val();
+           var ifsc = $('#ifsc').val();
+           var branch = $('#branch').val();
+           
+           $.ajax({
+            type: "POST",
+            url: "/account/create_form",
+            data: {"Username": name, "account_number": acc, "ifsc": ifsc, "branch": branch},
+            success: function(data)
+            {
+                window.location.replace("/account/form_check")
+            }
+            
+           });
+        }
+    </script>
+
+
+</body>
+</html>

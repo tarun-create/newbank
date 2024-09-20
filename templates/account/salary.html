@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/account_salary.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <nav id="na">
+        <!-- <marquee behavior="" direction=""></marquee> -->
+        <h1>Welcome To Sudeeksha Banking!!</h1>
+    </nav>
+    <div class="nav">
+        <h1>Salary Account</h1>
+        <p>Welcome back!!</p>
+    </div>
+    <div class="main-section">
+        <div class="main-left">
+            <img src="{% static 'img/account_Loans.jpg'%}" alt="">
+
+        </div>
+        <div class="main-right">
+            <div class="a1">
+                
+                <input type="text" placeholder="Enter Your Account Number" id="account">
+        
+                <input type="text" placeholder="Enter the branch" id="branch_name">
+
+            </div>
+
+            
+
+            
+
+            <!-- <div class="a2">
+                <input type="text" placeholder="Type Your Message">
+
+
+            </div> -->
+
+            <br>
+
+            <button id="but" onclick="check()">Check</button>
+
+        </div>
+
+    </div>
+
+
+    <script>
+        function check(){
+            var acc = $('#account').val();
+            var branch_name = $('#branch_name').val();
+            
+
+            $.ajax({
+            type: "POST",
+            url: "/account/salary_account",
+            data: {"account": acc, "branch_name":branch_name},
+            success: function(data)
+            {
+                window.location.replace("/account/view_salary")
+            }
+            
+           });
+        }
+    </script>
+</body>
+</html>
