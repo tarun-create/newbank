@@ -1,0 +1,110 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Loan Landing Page</title>
+    <link rel="stylesheet" href="{% static '/css/loan_home.css' %}">
+
+</head>
+<body>
+    <header>
+        <!-- <div class="logo"> -->
+            <!-- <img src="./Images/logo.png" alt="Your Bank Logo"> -->
+        <!-- </div> -->
+        <nav>
+            <ul>
+                <li><a href="#home-loans">Home Loans</a></li>
+                <li><a href="#personal-loans">Personal Loans</a></li>
+                <li><a href="#business-loans">Business Loans</a></li>
+                <li><a href="#education-loans">Education Loans</a></li>
+                <li><a href="/loan/loan_apply">Apply Now</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Unlock Your Financial Freedom with Our Tailored Loan Solutions</h1>
+            <p>Whether its buying a home, expanding your business, or pursuing higher education, we have a loan just for you.</p>
+            <a href="/loan/loan_apply" class="cta-button" >Apply Now</a>
+            <a href="#" class="cta-button secondary">Learn More</a>
+        </div>
+    </section>
+
+    <section class="loan-types">
+        <h2>Choose the Perfect Loan for Your Needs</h2>
+        <div class="loan-option">
+            <img src="{% static '/img/loan_home_loan.jpg' %}" alt="Home Loan">
+            <h3>Home Loans</h3>
+            <p>Buy your dream home with our competitive rates and flexible terms.</p>
+            <a href="#home-loans" class="cta-button">Learn More</a>
+        </div>
+        <div class="loan-option">
+            <img src="{% static '/img/loan_pers_loan.jpg' %}" alt="Personal Loan">
+            <h3>Personal Loans</h3>
+            <p>Get quick funds for personal needs with easy repayment options.</p>
+            <a href="#personal-loans" class="cta-button">Learn More</a>
+        </div>
+        <div class="loan-option">
+            <img src="{% static '/img/loan_busin_loan.jpg' %}" alt="Business Loan">
+            <h3>Business Loans</h3>
+            <p>Fuel your business growth with customized loan solutions.</p>
+            <a href="#business-loans" class="cta-button">Learn More</a>
+        </div>
+        <div class="loan-option">
+            <img src="{% static '/img/loan_edu_loan.jpg' %}" alt="Education Loan">
+            <h3>Education Loans</h3>
+            <p>Invest in your future with our affordable education loans.</p>
+            <a href="#education-loans" class="cta-button">Learn More</a>
+        </div>
+    </section>
+
+    <section class="why-choose-us">
+        <h2>Why Our Customers Trust Us</h2>
+        <div class="feature">
+            <img src="{% static '/img/loan_Intrest_l.jpg' %}" alt="Competitive Rates">
+            <h3>Competitive Rates</h3>
+            <p>Enjoy attractive interest rates tailored to your financial needs.</p>
+        </div>
+        <div class="feature">
+            <img src="{% static '/img/loan_approv_lo.jpg' %}" alt="Fast Approval">
+            <h3>Fast Approval</h3>
+            <p>Get quick and hassle-free loan approvals.</p>
+        </div>
+        <div class="feature">
+            <img src="{% static '/img/loan_support.jpg' %}" alt="Expert Support">
+            <h3>Expert Support</h3>
+            <p>Our dedicated team is here to assist you every step of the way.</p>
+        </div>
+    </section>
+
+    <section class="apply">
+        
+            
+            <span id="but">
+                <a href="/loan/loan_apply"><button type="submit" class="cta-button" >Submit Application</button></a> &nbsp;
+                <a href="/loan/loan_status"><button type="button" class="cta-button">Check Application Status</button></a>
+            </span>
+    </section>
+
+    <footer>
+        <div class="contact-info">
+            <p>Call us at <a href="tel:8445368999">8445368999</a></p>
+            <p>Email us at <a href="mailto:sudeeksha@gmail.com">sudeeksha@gmail.com</a></p>
+        </div>
+        <div class="footer-links">
+            <a href="#privacy-policy">Privacy Policy</a> |
+            <a href="#terms">Terms and Conditions</a> |
+            <a href="#faq">FAQ</a>
+        </div>
+        <div class="social-media">
+            <a href="https://facebook.com/yourbank" target="_blank">Facebook</a>
+            <a href="https://twitter.com/yourbank" target="_blank">Twitter</a>
+            <a href="https://instagram.com/yourbank" target="_blank">Instagram</a>
+        </div>
+    </footer>
+
+</body>
+</html>

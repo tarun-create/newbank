@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudeeksha Bank Insurance - Vehicle Insurance</title>
+    <link rel="stylesheet" href="{% static 'css/vehicleinsurance.css'%}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="#">Sudeeksha Bank Insurance</a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="{% url 'index' %}">Home</a></li> 
+                    <li><a href="{% url 'vehicle-insurance' %}">Vehicle Insurance</a></li>
+                    <li> <a href="{% url 'life-insurance' %}">Life Insurance</a></li>
+                    <li><a href=" health-insurance.html' ">Health Insurance</a></li>
+                </ul>
+            </nav>
+            <div class="marquee">
+                <h1>Vehicle Insurance</h1>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <section class="insurance-details">
+                <h2>Vehicle Insurance Application</h2>
+                <div class="form">
+                    <label for="vehicle-make">Vehicle Make:</label>
+                    <input type="text" id="vehicle-make" name="vehicle-make" required>
+
+                    <label for="vehicle-model">Vehicle Model:</label>
+                    <input type="text" id="vehicle-model" name="vehicle-model" required>
+
+                    <label for="registration-number">Registration Number:</label>
+                    <input type="text" id="registration-number" name="registration-number" required>
+
+                    <label for="insurance-doc">Upload Insurance Document:</label>
+                    <input type="file" id="insurance-doc" name="insurance-doc" accept=".pdf,.jpg,.png" required>
+
+                    <button type="submit" onclick="check()">submit</button>
+                </form>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Sudeeksha Bank Insurance. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
+<script>
+    function check()
+    {
+        var vehicle_make = $('#vehicle-make').val();
+        var vehicle_model = $('#vehicle-model').val();
+        var registration_number=$('#registration-number').val();
+        var insurance_doc=$('#insurance-doc').val();
+        
+    
+        $.ajax({
+        type: "POST",
+        url:  "{% url 'VehicleInsuranceApplication_check' %}" ,
+        data: {"vehicle-make": vehicle_make,"vehicle-model": vehicle_model,"registration-number": registration_number,"insurance-doc": insurance_doc},
+        success: function(data)
+        {
+            window.location.replace("/insurance/VehicleInsuranceApplication_view");
+        }
+    
+    });
+    }
+    </script>
+    </html>
+    

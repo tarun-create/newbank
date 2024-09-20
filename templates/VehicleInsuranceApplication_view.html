@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static '/css/styles.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    
+    <table class="table" style="border: 1px solid black;">
+        <thead>
+            <tr style="background-color: gray; color:beige;">
+                <td>vehicle-make</td>
+                <td>vehicle-model</td>
+                <td>registration-number</td>
+                <td>insurance-doc</td>
+                <td>delete</td>
+                <td>update</td>
+
+            </tr>
+        </thead>
+        <tbody>
+            '{% for obj in userdata %}'
+            <tr>
+                <td><input id="vehicle_make{{obj.vehicle_make}}" type="text" value={{obj.vehicle_make}}> </td>
+                <td><input id="vehicle_model{{obj.vehicle_make}}"  type="text" value={{obj.vehicle_model}}></td>
+                <td><input id="registration_number{{obj.vehicle_make}}"  type="text" value={{obj.registration_number}}></td>
+                <td><input id="insurance_doc{{ obj.vehicle_make }}" type="text" value={{obj.insurance_doc}}></td>
+                <td><button onclick="delete_record('{{obj.vehicle_make}}');">delete</button></td>
+                <td><button onclick="update_vehicle('{{obj.vehicle_make}}');">update</button></td>
+
+            </tr>
+            '{% endfor %}'
+        </tbody>
+    </table>
+    <script>
+        function delete_record(username){
+            
+            $.ajax({
+                    type: "POST",
+                    url: "/insurance/delete_vehicle",
+                    data: {"vehicle_make": username },
+                    success: function(data)
+                    {
+                        window.location.replace("/insurance/VehicleInsuranceApplication_view")
+                    }
+                
+                });
+                }
+         function update_vehicle(vehicle_make) {
+            var vehicle_model = $('#vehicle_model'+vehicle_make).val();
+            var registration_number = $('#registration_number'+vehicle_make).val();
+            var insurance_doc = $('#insurance_doc'+vehicle_make).val();
+
+             $.ajax({
+                     type:'POST',
+                     url:"/insurance/update_vehicle" ,
+                     data : {"vehicle_make":vehicle_make , "vehicle_model": vehicle_model, "registration_number":registration_number ,"insurance_doc":insurance_doc},
+                     success: function(data)
+                     {
+                         window.location.replace("/insurance/VehicleInsuranceApplication_view");
+                }
+                });
+        
+    }
+
+    </script>
+   
+   
+</body>
+</html>

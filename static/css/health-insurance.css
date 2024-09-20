@@ -1,0 +1,147 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* Light gray background for the whole page */
+}
+
+/* Header Styling */
+header {
+    background-color: hsl(229, 56%, 50%); /* Main blue color for header */
+    color: white;
+    padding: 20px 0;
+}
+
+header .container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.nav-links li {
+    
+    margin: 0 10px;
+    display: flex;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: color 0.3s;
+    display: flex;
+}
+
+.nav-links a:hover {
+    color: hsl(229, 56%, 70%); /* Lighter blue for hover effect */
+}
+
+.marquee h1 {
+    text-align: center;
+    font-size: 2.5em;
+    margin: 0;
+}
+
+/* Main Content Styling */
+main {
+    padding: 20px 0;
+}
+
+.insurance-details {
+    padding: 30px;
+    border: 2px solid hsl(229, 56%, 60%); /* Lighter blue border */
+    border-radius: 10px;
+    background-color: #fff; /* White background for the details section */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    margin: 30px auto;
+    max-width: 800px; /* Center-align and limit width */
+}
+
+.insurance-details h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: hsl(229, 56%, 40%); /* Darker shade of blue for headings */
+}
+
+/* Form Styling */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.insurance-details label {
+    font-size: 1.2em;
+    color: #333; /* Dark gray for text readability */
+}
+
+.insurance-details input,
+.insurance-details textarea {
+    padding: 12px;
+    font-size: 1em;
+    border: 1px solid #ddd; /* Light gray border for inputs */
+    border-radius: 5px;
+    background-color: #fff; /* White background for inputs */
+}
+
+.insurance-details input:focus,
+.insurance-details textarea:focus {
+    border-color: hsl(229, 56%, 40%); /* Blue border on focus */
+    outline: none; /* Remove default focus outline */
+    box-shadow: 0 0 5px rgba(0, 51, 102, 0.2); /* Subtle shadow on focus */
+}
+
+.insurance-details button {
+    padding: 12px 25px;
+    font-size: 1.2em;
+    background-color: rgb(59, 135, 165); /* Blue background for button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition effects */
+}
+
+.insurance-details button:hover {
+    background-color: rgb(49, 113, 138); /* Darker blue on hover */
+    transform: scale(1.05); /* Slightly enlarge button on hover */
+}
+
+.insurance-details button:active {
+    background-color: rgb(40, 92, 111); /* Even darker blue when pressed */
+    transform: scale(0.98); /* Slightly shrink button on press */
+}
+
+/* Footer Styling */
+footer {
+    background-color: hsl(229, 56%, 20%); /* Dark blue for footer */
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer .container {
+    width: 90%;
+    margin: 0 auto;
+}

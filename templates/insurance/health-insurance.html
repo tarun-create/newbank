@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudeeksha Bank Insurance - Health Insurance</title>
+    <link rel="stylesheet" href="{% static 'css/health-insurance.css'%}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="#">Sudeeksha Bank Insurance</a>
+                </div>
+                
+                <ul class="nav-links">
+                    <li><a href="{% url 'index' %}">Home</a></li> 
+                    <li><a href="{% url 'vehicle-insurance' %}">Vehicle Insurance</a></li>
+                   <li> <a href="{% url 'life-insurance' %}">Life Insurance</a></li>
+                    <li><a href="health-insurance.html">Health Insurance</a></li>
+                </ul>
+            </nav>
+            <div class="marquee">
+                <h1>Health Insurance</h1>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <section class="insurance-details">
+                <h2>Health Insurance Application</h2>
+               <div class="form">
+                    <label for="full-name">Full Name:</label>
+                    <input type="text" id="full-name" name="full-name" required>
+
+                    <label for="dob">Date of Birth:</label>
+                    <input type="date" id="dob" name="dob" required>
+
+                    <label for="medical-history">Medical History:</label>
+                    <textarea id="medical-history" name="medical-history" rows="4" required></textarea>
+
+                    <label for="health-doc">Upload Health Document:</label>
+                    <input type="file" id="health-doc" name="health-doc" accept=".pdf,.jpg,.png" required>
+
+                    <button type="submit" onclick="check()">Submit</button>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Sudeeksha Bank Insurance. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        function check()
+        {
+            var full_name = $('#full-name').val()
+            var dob = $('#dob').val();
+            var medical_history=$('#medical-history').val();
+            var health_doc=$('#health-doc').val();
+            
+        
+            $.ajax({
+            type: "POST",
+            url:  "/insurance/HealthInsuranceApplication_check" ,
+            data: {"full-name": full_name,"dob": dob,"medical-history":medical_history ,"health-doc": health_doc},
+            success: function(data)
+            {
+                window.location.replace("/insurance/HealthInsuranceApplication_view");
+            }
+        
+        });
+        }
+        </script>        
+</body>
+</html>
